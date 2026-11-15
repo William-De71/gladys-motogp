@@ -1,0 +1,14 @@
+Gladys MotoGP integration
+Copyright 2026 William Deren
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The calendar, the results and the standings come from the public API behind
+the official website motogp.com (https://api.motogp.pulselive.com), read
+without a key, a few dozen requests a day. The widgets and the calendar
+events name motogp.com as their source. The files under test/fixtures are
+reduced copies of answers of this API, kept only to test their reading.
+
+MotoGP, Moto2, Moto3 and the related names and logos are trademarks of Dorna
+Sports S.L. This community integration is unofficial: it is not affiliated
+with, endorsed or sponsored by Dorna Sports, the FIM or motogp.com.

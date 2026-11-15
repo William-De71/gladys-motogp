@@ -1,0 +1,2463 @@
+{
+  "manifest_version": 1,
+  "type": "calendar",
+  "name": "MotoGP",
+  "description": {
+    "en": "MotoGP, Moto2 and Moto3: session calendars, reminders, results and standings.",
+    "fr": "MotoGP, Moto2 et Moto3 : calendriers des séances, rappels, résultats, classements.",
+    "de": "MotoGP, Moto2 und Moto3: Session-Kalender, Erinnerungen, Ergebnisse, WM-Stand.",
+    "es": "MotoGP, Moto2 y Moto3: calendarios de sesiones, avisos, resultados y clasificación."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-motogp:0.1.0",
+  "gladys_version": ">=5.3.0",
+  "categories": ["leisure"],
+  "keywords": [
+    "Moto2",
+    "Moto3",
+    "Grand Prix",
+    "moto",
+    "motorcycle racing",
+    "Bagger World Cup",
+    "Dorna"
+  ],
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-motogp/main/cover.jpg",
+  "transports": ["cloud"],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "motogp.com",
+        "fr": "motogp.com",
+        "de": "motogp.com",
+        "es": "motogp.com"
+      },
+      "description": {
+        "en": "The calendar, the results and the standings come from motogp.com, the official website of the championship, without an account or a key. Choose the classes and the sessions to follow, then enable the integration in “My calendars” below: each user gets one calendar per class. Nothing about you leaves your network: the integration only reads the public calendar and results.",
+        "fr": "Le calendrier, les résultats et les classements viennent de motogp.com, le site officiel du championnat, sans compte ni clé. Choisissez les catégories et les séances à suivre, puis activez l’intégration dans « Mes calendriers » ci-dessous : chaque utilisateur obtient un calendrier par catégorie. Rien sur vous ne quitte votre réseau : l’intégration ne lit que le calendrier et les résultats publics.",
+        "de": "Kalender, Ergebnisse und Wertungen stammen von motogp.com, der offiziellen Website der Meisterschaft, ohne Konto oder Schlüssel. Wählen Sie die Klassen und Sessions, dann aktivieren Sie die Integration unten unter „Meine Kalender“: Jeder Benutzer erhält einen Kalender pro Klasse. Nichts über Sie verlässt Ihr Netzwerk: Die Integration liest nur den öffentlichen Kalender und die Ergebnisse.",
+        "es": "El calendario, los resultados y las clasificaciones proceden de motogp.com, la web oficial del campeonato, sin cuenta ni clave. Elija las categorías y las sesiones que seguir y active luego la integración en «Mis calendarios» más abajo: cada usuario obtiene un calendario por categoría. Nada sobre usted sale de su red: la integración solo lee el calendario y los resultados públicos."
+      },
+      "links": [
+        {
+          "url": "https://www.motogp.com/en/calendar",
+          "label": {
+            "en": "MotoGP calendar",
+            "fr": "Calendrier MotoGP",
+            "de": "MotoGP-Kalender",
+            "es": "Calendario de MotoGP"
+          }
+        }
+      ]
+    },
+    {
+      "key": "categories",
+      "type": "multi_select",
+      "label": {
+        "en": "Classes",
+        "fr": "Catégories",
+        "de": "Klassen",
+        "es": "Categorías"
+      },
+      "options": [
+        {
+          "value": "motogp",
+          "label": {
+            "en": "MotoGP",
+            "fr": "MotoGP",
+            "de": "MotoGP",
+            "es": "MotoGP"
+          }
+        },
+        {
+          "value": "moto2",
+          "label": {
+            "en": "Moto2",
+            "fr": "Moto2",
+            "de": "Moto2",
+            "es": "Moto2"
+          }
+        },
+        {
+          "value": "moto3",
+          "label": {
+            "en": "Moto3",
+            "fr": "Moto3",
+            "de": "Moto3",
+            "es": "Moto3"
+          }
+        },
+        {
+          "value": "baggers",
+          "label": {
+            "en": "Bagger World Cup (calendar only)",
+            "fr": "Bagger World Cup (calendrier seul)",
+            "de": "Bagger World Cup (nur Kalender)",
+            "es": "Bagger World Cup (solo calendario)"
+          }
+        }
+      ],
+      "description": {
+        "en": "One calendar per class. The Bagger World Cup has no results nor standings on motogp.com.",
+        "fr": "Un calendrier par catégorie. La Bagger World Cup n’a ni résultats ni classement sur motogp.com.",
+        "de": "Ein Kalender pro Klasse. Der Bagger World Cup hat auf motogp.com weder Ergebnisse noch Wertung.",
+        "es": "Un calendario por categoría. La Bagger World Cup no tiene resultados ni clasificación en motogp.com."
+      },
+      "required": true,
+      "default": ["motogp"]
+    },
+    {
+      "key": "sessions",
+      "type": "multi_select",
+      "label": {
+        "en": "Sessions",
+        "fr": "Séances",
+        "de": "Sessions",
+        "es": "Sesiones"
+      },
+      "options": [
+        {
+          "value": "race",
+          "label": {
+            "en": "Races",
+            "fr": "Courses",
+            "de": "Rennen",
+            "es": "Carreras"
+          }
+        },
+        {
+          "value": "sprint",
+          "label": {
+            "en": "Sprints (MotoGP)",
+            "fr": "Sprints (MotoGP)",
+            "de": "Sprints (MotoGP)",
+            "es": "Sprints (MotoGP)"
+          }
+        },
+        {
+          "value": "qualifying",
+          "label": {
+            "en": "Qualifying",
+            "fr": "Qualifications",
+            "de": "Qualifying",
+            "es": "Clasificación"
+          }
+        },
+        {
+          "value": "practice",
+          "label": {
+            "en": "Practice",
+            "fr": "Essais",
+            "de": "Training",
+            "es": "Entrenamientos"
+          }
+        },
+        {
+          "value": "warmup",
+          "label": {
+            "en": "Warm up",
+            "fr": "Warm-up",
+            "de": "Warm-up",
+            "es": "Warm up"
+          }
+        },
+        {
+          "value": "test",
+          "label": {
+            "en": "Tests (outside Grands Prix)",
+            "fr": "Tests (hors Grands Prix)",
+            "de": "Tests (außerhalb der Grands Prix)",
+            "es": "Tests (fuera de los Grandes Premios)"
+          }
+        }
+      ],
+      "description": {
+        "en": "Put in the calendars, seen by the “a session starts” trigger and the schedule widgets.",
+        "fr": "Mises dans les calendriers, vues par le déclencheur « une séance commence » et les widgets de programme.",
+        "de": "In die Kalender übernommen, vom Auslöser „eine Session beginnt“ und den Zeitplan-Widgets genutzt.",
+        "es": "Se ponen en los calendarios y las ven el disparador «empieza una sesión» y los widgets de horario."
+      },
+      "required": true,
+      "default": ["race", "sprint", "qualifying"]
+    },
+    {
+      "key": "favorite_riders",
+      "type": "string",
+      "label": {
+        "en": "Favorite riders (optional)",
+        "fr": "Pilotes favoris (facultatif)",
+        "de": "Lieblingsfahrer (optional)",
+        "es": "Pilotos favoritos (opcional)"
+      },
+      "description": {
+        "en": "Numbers or names, separated by commas. Highlighted in the widgets, and in the scenes.",
+        "fr": "Numéros ou noms, séparés par des virgules. Mis en avant dans les widgets et les scènes.",
+        "de": "Startnummern oder Namen, durch Kommas getrennt. In Widgets und Szenen hervorgehoben.",
+        "es": "Dorsales o nombres, separados por comas. Destacados en los widgets y las escenas."
+      },
+      "placeholder": {
+        "en": "93, Bezzecchi",
+        "fr": "93, Bezzecchi",
+        "de": "93, Bezzecchi",
+        "es": "93, Bezzecchi"
+      }
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "label": {
+        "en": "Language of the scene texts",
+        "fr": "Langue des textes des scènes",
+        "de": "Sprache der Szenentexte",
+        "es": "Idioma de los textos de las escenas"
+      },
+      "description": {
+        "en": "For the sentences of the scene triggers and actions. Automatic: the language of the dashboard.",
+        "fr": "Pour les phrases des déclencheurs et actions de scène. Automatique : la langue du tableau de bord.",
+        "de": "Für die Sätze der Szenenauslöser und -aktionen. Automatisch: die Sprache des Dashboards.",
+        "es": "Para las frases de los disparadores y acciones de escena. Automático: el idioma del panel."
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en": "Automatic",
+            "fr": "Automatique",
+            "de": "Automatisch",
+            "es": "Automático"
+          }
+        },
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ],
+      "default": "auto"
+    }
+  ],
+  "widgets": [
+    {
+      "key": "next_session",
+      "label": {
+        "en": "Next MotoGP session",
+        "fr": "Prochaine séance MotoGP",
+        "de": "Nächste MotoGP-Session",
+        "es": "Próxima sesión MotoGP"
+      },
+      "description": {
+        "en": "Countdown to the next session, and the rest of the Grand Prix weekend.",
+        "fr": "Compte à rebours jusqu’à la prochaine séance, et la suite du week-end de Grand Prix.",
+        "de": "Countdown bis zur nächsten Session und der Rest des Grand-Prix-Wochenendes.",
+        "es": "Cuenta atrás hasta la próxima sesión y el resto del fin de semana de Gran Premio."
+      },
+      "icon": "clock",
+      "settings": [
+        {
+          "key": "categories",
+          "type": "multi_select",
+          "label": {
+            "en": "Classes",
+            "fr": "Catégories",
+            "de": "Klassen",
+            "es": "Categorías"
+          },
+          "options": [
+            {
+              "value": "motogp",
+              "label": {
+                "en": "MotoGP",
+                "fr": "MotoGP",
+                "de": "MotoGP",
+                "es": "MotoGP"
+              }
+            },
+            {
+              "value": "moto2",
+              "label": {
+                "en": "Moto2",
+                "fr": "Moto2",
+                "de": "Moto2",
+                "es": "Moto2"
+              }
+            },
+            {
+              "value": "moto3",
+              "label": {
+                "en": "Moto3",
+                "fr": "Moto3",
+                "de": "Moto3",
+                "es": "Moto3"
+              }
+            },
+            {
+              "value": "baggers",
+              "label": {
+                "en": "Bagger World Cup (calendar only)",
+                "fr": "Bagger World Cup (calendrier seul)",
+                "de": "Bagger World Cup (nur Kalender)",
+                "es": "Bagger World Cup (solo calendario)"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: every followed class.",
+            "fr": "Vide : toutes les catégories suivies.",
+            "de": "Leer: alle verfolgten Klassen.",
+            "es": "Vacío: todas las categorías seguidas."
+          }
+        },
+        {
+          "key": "sessions",
+          "type": "multi_select",
+          "label": {
+            "en": "Sessions",
+            "fr": "Séances",
+            "de": "Sessions",
+            "es": "Sesiones"
+          },
+          "options": [
+            {
+              "value": "race",
+              "label": {
+                "en": "Races",
+                "fr": "Courses",
+                "de": "Rennen",
+                "es": "Carreras"
+              }
+            },
+            {
+              "value": "sprint",
+              "label": {
+                "en": "Sprints (MotoGP)",
+                "fr": "Sprints (MotoGP)",
+                "de": "Sprints (MotoGP)",
+                "es": "Sprints (MotoGP)"
+              }
+            },
+            {
+              "value": "qualifying",
+              "label": {
+                "en": "Qualifying",
+                "fr": "Qualifications",
+                "de": "Qualifying",
+                "es": "Clasificación"
+              }
+            },
+            {
+              "value": "practice",
+              "label": {
+                "en": "Practice",
+                "fr": "Essais",
+                "de": "Training",
+                "es": "Entrenamientos"
+              }
+            },
+            {
+              "value": "warmup",
+              "label": {
+                "en": "Warm up",
+                "fr": "Warm-up",
+                "de": "Warm-up",
+                "es": "Warm up"
+              }
+            },
+            {
+              "value": "test",
+              "label": {
+                "en": "Tests (outside Grands Prix)",
+                "fr": "Tests (hors Grands Prix)",
+                "de": "Tests (außerhalb der Grands Prix)",
+                "es": "Tests (fuera de los Grandes Premios)"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: the kinds of the configuration.",
+            "fr": "Vide : les types de la configuration.",
+            "de": "Leer: die Arten der Konfiguration.",
+            "es": "Vacío: los tipos de la configuración."
+          }
+        }
+      ]
+    },
+    {
+      "key": "schedule",
+      "label": {
+        "en": "MotoGP schedule",
+        "fr": "Programme MotoGP",
+        "de": "MotoGP-Zeitplan",
+        "es": "Horario de MotoGP"
+      },
+      "description": {
+        "en": "The next sessions of your classes, with day, time and circuit.",
+        "fr": "Les prochaines séances de vos catégories, avec jour, heure et circuit.",
+        "de": "Die nächsten Sessions Ihrer Klassen mit Tag, Uhrzeit und Strecke.",
+        "es": "Las próximas sesiones de sus categorías, con día, hora y circuito."
+      },
+      "icon": "calendar",
+      "settings": [
+        {
+          "key": "categories",
+          "type": "multi_select",
+          "label": {
+            "en": "Classes",
+            "fr": "Catégories",
+            "de": "Klassen",
+            "es": "Categorías"
+          },
+          "options": [
+            {
+              "value": "motogp",
+              "label": {
+                "en": "MotoGP",
+                "fr": "MotoGP",
+                "de": "MotoGP",
+                "es": "MotoGP"
+              }
+            },
+            {
+              "value": "moto2",
+              "label": {
+                "en": "Moto2",
+                "fr": "Moto2",
+                "de": "Moto2",
+                "es": "Moto2"
+              }
+            },
+            {
+              "value": "moto3",
+              "label": {
+                "en": "Moto3",
+                "fr": "Moto3",
+                "de": "Moto3",
+                "es": "Moto3"
+              }
+            },
+            {
+              "value": "baggers",
+              "label": {
+                "en": "Bagger World Cup (calendar only)",
+                "fr": "Bagger World Cup (calendrier seul)",
+                "de": "Bagger World Cup (nur Kalender)",
+                "es": "Bagger World Cup (solo calendario)"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: every followed class.",
+            "fr": "Vide : toutes les catégories suivies.",
+            "de": "Leer: alle verfolgten Klassen.",
+            "es": "Vacío: todas las categorías seguidas."
+          }
+        },
+        {
+          "key": "sessions",
+          "type": "multi_select",
+          "label": {
+            "en": "Sessions",
+            "fr": "Séances",
+            "de": "Sessions",
+            "es": "Sesiones"
+          },
+          "options": [
+            {
+              "value": "race",
+              "label": {
+                "en": "Races",
+                "fr": "Courses",
+                "de": "Rennen",
+                "es": "Carreras"
+              }
+            },
+            {
+              "value": "sprint",
+              "label": {
+                "en": "Sprints (MotoGP)",
+                "fr": "Sprints (MotoGP)",
+                "de": "Sprints (MotoGP)",
+                "es": "Sprints (MotoGP)"
+              }
+            },
+            {
+              "value": "qualifying",
+              "label": {
+                "en": "Qualifying",
+                "fr": "Qualifications",
+                "de": "Qualifying",
+                "es": "Clasificación"
+              }
+            },
+            {
+              "value": "practice",
+              "label": {
+                "en": "Practice",
+                "fr": "Essais",
+                "de": "Training",
+                "es": "Entrenamientos"
+              }
+            },
+            {
+              "value": "warmup",
+              "label": {
+                "en": "Warm up",
+                "fr": "Warm-up",
+                "de": "Warm-up",
+                "es": "Warm up"
+              }
+            },
+            {
+              "value": "test",
+              "label": {
+                "en": "Tests (outside Grands Prix)",
+                "fr": "Tests (hors Grands Prix)",
+                "de": "Tests (außerhalb der Grands Prix)",
+                "es": "Tests (fuera de los Grandes Premios)"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: the kinds of the configuration.",
+            "fr": "Vide : les types de la configuration.",
+            "de": "Leer: die Arten der Konfiguration.",
+            "es": "Vacío: los tipos de la configuración."
+          }
+        },
+        {
+          "key": "count",
+          "type": "select",
+          "label": {
+            "en": "Sessions listed",
+            "fr": "Séances listées",
+            "de": "Angezeigte Sessions",
+            "es": "Sesiones mostradas"
+          },
+          "options": [
+            {
+              "value": "3",
+              "label": {
+                "en": "3",
+                "fr": "3",
+                "de": "3",
+                "es": "3"
+              }
+            },
+            {
+              "value": "5",
+              "label": {
+                "en": "5",
+                "fr": "5",
+                "de": "5",
+                "es": "5"
+              }
+            },
+            {
+              "value": "8",
+              "label": {
+                "en": "8",
+                "fr": "8",
+                "de": "8",
+                "es": "8"
+              }
+            }
+          ],
+          "default": "5"
+        }
+      ]
+    },
+    {
+      "key": "standings",
+      "label": {
+        "en": "MotoGP standings",
+        "fr": "Classement MotoGP",
+        "de": "MotoGP-WM-Stand",
+        "es": "Clasificación MotoGP"
+      },
+      "description": {
+        "en": "The championship of a class, your favorite riders highlighted.",
+        "fr": "Le championnat d’une catégorie, vos pilotes favoris mis en avant.",
+        "de": "Die Wertung einer Klasse, Ihre Lieblingsfahrer hervorgehoben.",
+        "es": "El campeonato de una categoría, con sus pilotos favoritos destacados."
+      },
+      "icon": "award",
+      "settings": [
+        {
+          "key": "category",
+          "type": "select",
+          "label": {
+            "en": "Class",
+            "fr": "Catégorie",
+            "de": "Klasse",
+            "es": "Categoría"
+          },
+          "options": [
+            {
+              "value": "motogp",
+              "label": {
+                "en": "MotoGP",
+                "fr": "MotoGP",
+                "de": "MotoGP",
+                "es": "MotoGP"
+              }
+            },
+            {
+              "value": "moto2",
+              "label": {
+                "en": "Moto2",
+                "fr": "Moto2",
+                "de": "Moto2",
+                "es": "Moto2"
+              }
+            },
+            {
+              "value": "moto3",
+              "label": {
+                "en": "Moto3",
+                "fr": "Moto3",
+                "de": "Moto3",
+                "es": "Moto3"
+              }
+            }
+          ],
+          "default": "motogp"
+        },
+        {
+          "key": "count",
+          "type": "select",
+          "label": {
+            "en": "Rows",
+            "fr": "Lignes",
+            "de": "Zeilen",
+            "es": "Filas"
+          },
+          "options": [
+            {
+              "value": "5",
+              "label": {
+                "en": "5",
+                "fr": "5",
+                "de": "5",
+                "es": "5"
+              }
+            },
+            {
+              "value": "10",
+              "label": {
+                "en": "10",
+                "fr": "10",
+                "de": "10",
+                "es": "10"
+              }
+            }
+          ],
+          "default": "5"
+        }
+      ]
+    },
+    {
+      "key": "last_results",
+      "label": {
+        "en": "MotoGP results",
+        "fr": "Résultats MotoGP",
+        "de": "MotoGP-Ergebnisse",
+        "es": "Resultados MotoGP"
+      },
+      "description": {
+        "en": "The last race, sprint or qualifying of a class, with the gaps.",
+        "fr": "La dernière course, le dernier sprint ou les dernières qualifs d’une catégorie, avec les écarts.",
+        "de": "Letztes Rennen, Sprint oder Qualifying einer Klasse, mit den Abständen.",
+        "es": "La última carrera, sprint o clasificación de una categoría, con las diferencias."
+      },
+      "icon": "flag",
+      "settings": [
+        {
+          "key": "category",
+          "type": "select",
+          "label": {
+            "en": "Class",
+            "fr": "Catégorie",
+            "de": "Klasse",
+            "es": "Categoría"
+          },
+          "options": [
+            {
+              "value": "motogp",
+              "label": {
+                "en": "MotoGP",
+                "fr": "MotoGP",
+                "de": "MotoGP",
+                "es": "MotoGP"
+              }
+            },
+            {
+              "value": "moto2",
+              "label": {
+                "en": "Moto2",
+                "fr": "Moto2",
+                "de": "Moto2",
+                "es": "Moto2"
+              }
+            },
+            {
+              "value": "moto3",
+              "label": {
+                "en": "Moto3",
+                "fr": "Moto3",
+                "de": "Moto3",
+                "es": "Moto3"
+              }
+            }
+          ],
+          "default": "motogp"
+        },
+        {
+          "key": "session",
+          "type": "select",
+          "label": {
+            "en": "Session",
+            "fr": "Séance",
+            "de": "Session",
+            "es": "Sesión"
+          },
+          "options": [
+            {
+              "value": "race",
+              "label": {
+                "en": "Race",
+                "fr": "Course",
+                "de": "Rennen",
+                "es": "Carrera"
+              }
+            },
+            {
+              "value": "sprint",
+              "label": {
+                "en": "Sprint (MotoGP)",
+                "fr": "Sprint (MotoGP)",
+                "de": "Sprint (MotoGP)",
+                "es": "Sprint (MotoGP)"
+              }
+            },
+            {
+              "value": "qualifying",
+              "label": {
+                "en": "Qualifying (grid)",
+                "fr": "Qualifications (grille)",
+                "de": "Qualifying (Startaufstellung)",
+                "es": "Clasificación (parrilla)"
+              }
+            }
+          ],
+          "default": "race"
+        },
+        {
+          "key": "count",
+          "type": "select",
+          "label": {
+            "en": "Rows",
+            "fr": "Lignes",
+            "de": "Zeilen",
+            "es": "Filas"
+          },
+          "options": [
+            {
+              "value": "5",
+              "label": {
+                "en": "5",
+                "fr": "5",
+                "de": "5",
+                "es": "5"
+              }
+            },
+            {
+              "value": "10",
+              "label": {
+                "en": "10",
+                "fr": "10",
+                "de": "10",
+                "es": "10"
+              }
+            }
+          ],
+          "default": "5"
+        }
+      ]
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "session_starting",
+      "label": {
+        "en": "MotoGP: a session starts",
+        "fr": "MotoGP : une séance commence",
+        "de": "MotoGP: eine Session beginnt",
+        "es": "MotoGP: empieza una sesión"
+      },
+      "description": {
+        "en": "A session of a followed class starts, or will start in 15 min to 2 h.",
+        "fr": "Une séance d’une catégorie suivie commence, ou commencera dans 15 min à 2 h.",
+        "de": "Eine Session einer verfolgten Klasse beginnt oder beginnt in 15 Min. bis 2 Std.",
+        "es": "Empieza una sesión de una categoría seguida, o empezará en 15 min a 2 h."
+      },
+      "fields": [
+        {
+          "key": "lead",
+          "type": "select",
+          "label": {
+            "en": "When",
+            "fr": "Quand",
+            "de": "Wann",
+            "es": "Cuándo"
+          },
+          "options": [
+            {
+              "value": "0",
+              "label": {
+                "en": "At the start",
+                "fr": "Au départ",
+                "de": "Beim Start",
+                "es": "En la salida"
+              }
+            },
+            {
+              "value": "15",
+              "label": {
+                "en": "15 minutes before",
+                "fr": "15 minutes avant",
+                "de": "15 Minuten vorher",
+                "es": "15 minutos antes"
+              }
+            },
+            {
+              "value": "30",
+              "label": {
+                "en": "30 minutes before",
+                "fr": "30 minutes avant",
+                "de": "30 Minuten vorher",
+                "es": "30 minutos antes"
+              }
+            },
+            {
+              "value": "60",
+              "label": {
+                "en": "1 hour before",
+                "fr": "1 heure avant",
+                "de": "1 Stunde vorher",
+                "es": "1 hora antes"
+              }
+            },
+            {
+              "value": "120",
+              "label": {
+                "en": "2 hours before",
+                "fr": "2 heures avant",
+                "de": "2 Stunden vorher",
+                "es": "2 horas antes"
+              }
+            }
+          ],
+          "default": "0"
+        },
+        {
+          "key": "category",
+          "type": "multi_select",
+          "label": {
+            "en": "Classes",
+            "fr": "Catégories",
+            "de": "Klassen",
+            "es": "Categorías"
+          },
+          "options": [
+            {
+              "value": "motogp",
+              "label": {
+                "en": "MotoGP",
+                "fr": "MotoGP",
+                "de": "MotoGP",
+                "es": "MotoGP"
+              }
+            },
+            {
+              "value": "moto2",
+              "label": {
+                "en": "Moto2",
+                "fr": "Moto2",
+                "de": "Moto2",
+                "es": "Moto2"
+              }
+            },
+            {
+              "value": "moto3",
+              "label": {
+                "en": "Moto3",
+                "fr": "Moto3",
+                "de": "Moto3",
+                "es": "Moto3"
+              }
+            },
+            {
+              "value": "baggers",
+              "label": {
+                "en": "Bagger World Cup (calendar only)",
+                "fr": "Bagger World Cup (calendrier seul)",
+                "de": "Bagger World Cup (nur Kalender)",
+                "es": "Bagger World Cup (solo calendario)"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: every followed class.",
+            "fr": "Vide : toutes les catégories suivies.",
+            "de": "Leer: alle verfolgten Klassen.",
+            "es": "Vacío: todas las categorías seguidas."
+          }
+        },
+        {
+          "key": "session",
+          "type": "multi_select",
+          "label": {
+            "en": "Sessions",
+            "fr": "Séances",
+            "de": "Sessions",
+            "es": "Sesiones"
+          },
+          "options": [
+            {
+              "value": "race",
+              "label": {
+                "en": "Races",
+                "fr": "Courses",
+                "de": "Rennen",
+                "es": "Carreras"
+              }
+            },
+            {
+              "value": "sprint",
+              "label": {
+                "en": "Sprints (MotoGP)",
+                "fr": "Sprints (MotoGP)",
+                "de": "Sprints (MotoGP)",
+                "es": "Sprints (MotoGP)"
+              }
+            },
+            {
+              "value": "qualifying",
+              "label": {
+                "en": "Qualifying",
+                "fr": "Qualifications",
+                "de": "Qualifying",
+                "es": "Clasificación"
+              }
+            },
+            {
+              "value": "practice",
+              "label": {
+                "en": "Practice",
+                "fr": "Essais",
+                "de": "Training",
+                "es": "Entrenamientos"
+              }
+            },
+            {
+              "value": "warmup",
+              "label": {
+                "en": "Warm up",
+                "fr": "Warm-up",
+                "de": "Warm-up",
+                "es": "Warm up"
+              }
+            },
+            {
+              "value": "test",
+              "label": {
+                "en": "Tests (outside Grands Prix)",
+                "fr": "Tests (hors Grands Prix)",
+                "de": "Tests (außerhalb der Grands Prix)",
+                "es": "Tests (fuera de los Grandes Premios)"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: the kinds of the configuration.",
+            "fr": "Vide : les types de la configuration.",
+            "de": "Leer: die Arten der Konfiguration.",
+            "es": "Vacío: los tipos de la configuración."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "title",
+          "type": "string",
+          "label": {
+            "en": "Session (full title)",
+            "fr": "Séance (titre complet)",
+            "de": "Session (voller Titel)",
+            "es": "Sesión (título completo)"
+          },
+          "description": {
+            "en": "“MotoGP · Sprint – Valencia”.",
+            "fr": "« MotoGP · Sprint – Valencia ».",
+            "de": "„MotoGP · Sprint – Valencia“.",
+            "es": "«MotoGP · Sprint – Valencia»."
+          }
+        },
+        {
+          "key": "category",
+          "type": "string",
+          "label": {
+            "en": "Class (key)",
+            "fr": "Catégorie (clé)",
+            "de": "Klasse (Schlüssel)",
+            "es": "Categoría (clave)"
+          },
+          "description": {
+            "en": "motogp, moto2, moto3, baggers",
+            "fr": "motogp, moto2, moto3, baggers",
+            "de": "motogp, moto2, moto3, baggers",
+            "es": "motogp, moto2, moto3, baggers"
+          }
+        },
+        {
+          "key": "category_name",
+          "type": "string",
+          "label": {
+            "en": "Class",
+            "fr": "Catégorie",
+            "de": "Klasse",
+            "es": "Categoría"
+          }
+        },
+        {
+          "key": "session",
+          "type": "string",
+          "label": {
+            "en": "Session (key)",
+            "fr": "Séance (clé)",
+            "de": "Session (Schlüssel)",
+            "es": "Sesión (clave)"
+          },
+          "description": {
+            "en": "race, sprint, qualifying, practice, warmup, test",
+            "fr": "race, sprint, qualifying, practice, warmup, test",
+            "de": "race, sprint, qualifying, practice, warmup, test",
+            "es": "race, sprint, qualifying, practice, warmup, test"
+          }
+        },
+        {
+          "key": "session_code",
+          "type": "string",
+          "label": {
+            "en": "Session code",
+            "fr": "Code de la séance",
+            "de": "Session-Code",
+            "es": "Código de la sesión"
+          },
+          "description": {
+            "en": "FP1, PR, Q2, SPR, RAC…",
+            "fr": "FP1, PR, Q2, SPR, RAC…",
+            "de": "FP1, PR, Q2, SPR, RAC…",
+            "es": "FP1, PR, Q2, SPR, RAC…"
+          }
+        },
+        {
+          "key": "session_name",
+          "type": "string",
+          "label": {
+            "en": "Session name",
+            "fr": "Nom de la séance",
+            "de": "Name der Session",
+            "es": "Nombre de la sesión"
+          },
+          "description": {
+            "en": "In the language of the configuration: “Qualifying 2”.",
+            "fr": "Dans la langue de la configuration : « Qualifications 2 ».",
+            "de": "In der Sprache der Konfiguration: „Qualifying 2“.",
+            "es": "En el idioma de la configuración: «Clasificación 2»."
+          }
+        },
+        {
+          "key": "grand_prix",
+          "type": "string",
+          "label": {
+            "en": "Grand Prix",
+            "fr": "Grand Prix",
+            "de": "Grand Prix",
+            "es": "Gran Premio"
+          },
+          "description": {
+            "en": "“Valencia”, “Qatar”.",
+            "fr": "« Valencia », « Qatar ».",
+            "de": "„Valencia“, „Qatar“.",
+            "es": "«Valencia», «Qatar»."
+          }
+        },
+        {
+          "key": "event_name",
+          "type": "string",
+          "label": {
+            "en": "Event name",
+            "fr": "Nom de l’épreuve",
+            "de": "Name der Veranstaltung",
+            "es": "Nombre del evento"
+          },
+          "description": {
+            "en": "As motogp.com writes it.",
+            "fr": "Tel que motogp.com l’écrit.",
+            "de": "Wie motogp.com ihn schreibt.",
+            "es": "Tal como lo escribe motogp.com."
+          }
+        },
+        {
+          "key": "round",
+          "type": "number",
+          "label": {
+            "en": "Round (0 for a test)",
+            "fr": "Manche (0 pour un test)",
+            "de": "Lauf (0 bei einem Test)",
+            "es": "Ronda (0 en un test)"
+          }
+        },
+        {
+          "key": "circuit",
+          "type": "string",
+          "label": {
+            "en": "Circuit",
+            "fr": "Circuit",
+            "de": "Rennstrecke",
+            "es": "Circuito"
+          }
+        },
+        {
+          "key": "country",
+          "type": "string",
+          "label": {
+            "en": "Country",
+            "fr": "Pays",
+            "de": "Land",
+            "es": "País"
+          }
+        },
+        {
+          "key": "date",
+          "type": "string",
+          "label": {
+            "en": "Date (YYYY-MM-DD)",
+            "fr": "Date (AAAA-MM-JJ)",
+            "de": "Datum (JJJJ-MM-TT)",
+            "es": "Fecha (AAAA-MM-DD)"
+          }
+        },
+        {
+          "key": "time",
+          "type": "string",
+          "label": {
+            "en": "Time (HH:MM)",
+            "fr": "Heure (HH:MM)",
+            "de": "Uhrzeit (HH:MM)",
+            "es": "Hora (HH:MM)"
+          }
+        },
+        {
+          "key": "lead",
+          "type": "string",
+          "label": {
+            "en": "Lead (key)",
+            "fr": "Avance (clé)",
+            "de": "Vorlauf (Schlüssel)",
+            "es": "Antelación (clave)"
+          },
+          "description": {
+            "en": "0, 15, 30, 60, 120",
+            "fr": "0, 15, 30, 60, 120",
+            "de": "0, 15, 30, 60, 120",
+            "es": "0, 15, 30, 60, 120"
+          }
+        },
+        {
+          "key": "lead_minutes",
+          "type": "number",
+          "label": {
+            "en": "Minutes before the start",
+            "fr": "Minutes avant le départ",
+            "de": "Minuten vor dem Start",
+            "es": "Minutos antes de la salida"
+          }
+        }
+      ]
+    },
+    {
+      "key": "results_published",
+      "label": {
+        "en": "MotoGP: results are out",
+        "fr": "MotoGP : résultats publiés",
+        "de": "MotoGP: Ergebnisse veröffentlicht",
+        "es": "MotoGP: resultados publicados"
+      },
+      "description": {
+        "en": "The classification of a race, a sprint or the qualifying (grid) is out.",
+        "fr": "Le classement d’une course, d’un sprint ou des qualifications (grille) est publié.",
+        "de": "Die Wertung eines Rennens, eines Sprints oder des Qualifyings (Startaufstellung) ist da.",
+        "es": "Se publica la clasificación de una carrera, un sprint o la clasificación (parrilla)."
+      },
+      "fields": [
+        {
+          "key": "category",
+          "type": "multi_select",
+          "label": {
+            "en": "Classes",
+            "fr": "Catégories",
+            "de": "Klassen",
+            "es": "Categorías"
+          },
+          "options": [
+            {
+              "value": "motogp",
+              "label": {
+                "en": "MotoGP",
+                "fr": "MotoGP",
+                "de": "MotoGP",
+                "es": "MotoGP"
+              }
+            },
+            {
+              "value": "moto2",
+              "label": {
+                "en": "Moto2",
+                "fr": "Moto2",
+                "de": "Moto2",
+                "es": "Moto2"
+              }
+            },
+            {
+              "value": "moto3",
+              "label": {
+                "en": "Moto3",
+                "fr": "Moto3",
+                "de": "Moto3",
+                "es": "Moto3"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: every followed class.",
+            "fr": "Vide : toutes les catégories suivies.",
+            "de": "Leer: alle verfolgten Klassen.",
+            "es": "Vacío: todas las categorías seguidas."
+          }
+        },
+        {
+          "key": "session",
+          "type": "multi_select",
+          "label": {
+            "en": "Sessions",
+            "fr": "Séances",
+            "de": "Sessions",
+            "es": "Sesiones"
+          },
+          "options": [
+            {
+              "value": "race",
+              "label": {
+                "en": "Race",
+                "fr": "Course",
+                "de": "Rennen",
+                "es": "Carrera"
+              }
+            },
+            {
+              "value": "sprint",
+              "label": {
+                "en": "Sprint (MotoGP)",
+                "fr": "Sprint (MotoGP)",
+                "de": "Sprint (MotoGP)",
+                "es": "Sprint (MotoGP)"
+              }
+            },
+            {
+              "value": "qualifying",
+              "label": {
+                "en": "Qualifying (grid)",
+                "fr": "Qualifications (grille)",
+                "de": "Qualifying (Startaufstellung)",
+                "es": "Clasificación (parrilla)"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: race, sprint and qualifying.",
+            "fr": "Vide : course, sprint et qualifications.",
+            "de": "Leer: Rennen, Sprint und Qualifying.",
+            "es": "Vacío: carrera, sprint y clasificación."
+          }
+        },
+        {
+          "key": "favorite_result",
+          "type": "multi_select",
+          "label": {
+            "en": "Result of my favorite rider",
+            "fr": "Résultat de mon pilote favori",
+            "de": "Ergebnis meines Lieblingsfahrers",
+            "es": "Resultado de mi piloto favorito"
+          },
+          "description": {
+            "en": "Empty: whatever it is. Favorite riders are set in the configuration.",
+            "fr": "Vide : quel qu’il soit. Les pilotes favoris se règlent dans la configuration.",
+            "de": "Leer: egal welches. Lieblingsfahrer werden in der Konfiguration festgelegt.",
+            "es": "Vacío: sea cual sea. Los pilotos favoritos se eligen en la configuración."
+          },
+          "options": [
+            {
+              "value": "win",
+              "label": {
+                "en": "Wins",
+                "fr": "Gagne",
+                "de": "Gewinnt",
+                "es": "Gana"
+              }
+            },
+            {
+              "value": "podium",
+              "label": {
+                "en": "Second or third",
+                "fr": "Deuxième ou troisième",
+                "de": "Zweiter oder Dritter",
+                "es": "Segundo o tercero"
+              }
+            },
+            {
+              "value": "top_ten",
+              "label": {
+                "en": "4th to 10th",
+                "fr": "4e à 10e",
+                "de": "4. bis 10.",
+                "es": "4.º a 10.º"
+              }
+            },
+            {
+              "value": "finished",
+              "label": {
+                "en": "11th or further",
+                "fr": "11e ou au-delà",
+                "de": "11. oder dahinter",
+                "es": "11.º o más atrás"
+              }
+            },
+            {
+              "value": "retired",
+              "label": {
+                "en": "Not classified",
+                "fr": "Non classé",
+                "de": "Nicht gewertet",
+                "es": "No clasificado"
+              }
+            },
+            {
+              "value": "absent",
+              "label": {
+                "en": "Not in the classification",
+                "fr": "Absent du classement",
+                "de": "Nicht in der Wertung",
+                "es": "Ausente de la clasificación"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "title",
+          "type": "string",
+          "label": {
+            "en": "Session (full title)",
+            "fr": "Séance (titre complet)",
+            "de": "Session (voller Titel)",
+            "es": "Sesión (título completo)"
+          },
+          "description": {
+            "en": "“MotoGP · Sprint – Valencia”.",
+            "fr": "« MotoGP · Sprint – Valencia ».",
+            "de": "„MotoGP · Sprint – Valencia“.",
+            "es": "«MotoGP · Sprint – Valencia»."
+          }
+        },
+        {
+          "key": "category",
+          "type": "string",
+          "label": {
+            "en": "Class (key)",
+            "fr": "Catégorie (clé)",
+            "de": "Klasse (Schlüssel)",
+            "es": "Categoría (clave)"
+          },
+          "description": {
+            "en": "motogp, moto2, moto3, baggers",
+            "fr": "motogp, moto2, moto3, baggers",
+            "de": "motogp, moto2, moto3, baggers",
+            "es": "motogp, moto2, moto3, baggers"
+          }
+        },
+        {
+          "key": "category_name",
+          "type": "string",
+          "label": {
+            "en": "Class",
+            "fr": "Catégorie",
+            "de": "Klasse",
+            "es": "Categoría"
+          }
+        },
+        {
+          "key": "session",
+          "type": "string",
+          "label": {
+            "en": "Session (key)",
+            "fr": "Séance (clé)",
+            "de": "Session (Schlüssel)",
+            "es": "Sesión (clave)"
+          },
+          "description": {
+            "en": "race, sprint, qualifying, practice, warmup, test",
+            "fr": "race, sprint, qualifying, practice, warmup, test",
+            "de": "race, sprint, qualifying, practice, warmup, test",
+            "es": "race, sprint, qualifying, practice, warmup, test"
+          }
+        },
+        {
+          "key": "session_name",
+          "type": "string",
+          "label": {
+            "en": "Session name",
+            "fr": "Nom de la séance",
+            "de": "Name der Session",
+            "es": "Nombre de la sesión"
+          },
+          "description": {
+            "en": "In the language of the configuration: “Qualifying 2”.",
+            "fr": "Dans la langue de la configuration : « Qualifications 2 ».",
+            "de": "In der Sprache der Konfiguration: „Qualifying 2“.",
+            "es": "En el idioma de la configuración: «Clasificación 2»."
+          }
+        },
+        {
+          "key": "grand_prix",
+          "type": "string",
+          "label": {
+            "en": "Grand Prix",
+            "fr": "Grand Prix",
+            "de": "Grand Prix",
+            "es": "Gran Premio"
+          },
+          "description": {
+            "en": "“Valencia”, “Qatar”.",
+            "fr": "« Valencia », « Qatar ».",
+            "de": "„Valencia“, „Qatar“.",
+            "es": "«Valencia», «Qatar»."
+          }
+        },
+        {
+          "key": "round",
+          "type": "number",
+          "label": {
+            "en": "Round (0 for a test)",
+            "fr": "Manche (0 pour un test)",
+            "de": "Lauf (0 bei einem Test)",
+            "es": "Ronda (0 en un test)"
+          }
+        },
+        {
+          "key": "circuit",
+          "type": "string",
+          "label": {
+            "en": "Circuit",
+            "fr": "Circuit",
+            "de": "Rennstrecke",
+            "es": "Circuito"
+          }
+        },
+        {
+          "key": "date",
+          "type": "string",
+          "label": {
+            "en": "Date (YYYY-MM-DD)",
+            "fr": "Date (AAAA-MM-JJ)",
+            "de": "Datum (JJJJ-MM-TT)",
+            "es": "Fecha (AAAA-MM-DD)"
+          }
+        },
+        {
+          "key": "winner_name",
+          "type": "string",
+          "label": {
+            "en": "Winner (or pole)",
+            "fr": "Vainqueur (ou pole)",
+            "de": "Sieger (oder Pole)",
+            "es": "Ganador (o pole)"
+          }
+        },
+        {
+          "key": "winner_number",
+          "type": "number",
+          "label": {
+            "en": "Number of the winner",
+            "fr": "Numéro du vainqueur",
+            "de": "Startnummer des Siegers",
+            "es": "Dorsal del ganador"
+          }
+        },
+        {
+          "key": "winner_team",
+          "type": "string",
+          "label": {
+            "en": "Team of the winner",
+            "fr": "Équipe du vainqueur",
+            "de": "Team des Siegers",
+            "es": "Equipo del ganador"
+          }
+        },
+        {
+          "key": "second_name",
+          "type": "string",
+          "label": {
+            "en": "Second",
+            "fr": "Deuxième",
+            "de": "Zweiter",
+            "es": "Segundo"
+          }
+        },
+        {
+          "key": "third_name",
+          "type": "string",
+          "label": {
+            "en": "Third",
+            "fr": "Troisième",
+            "de": "Dritter",
+            "es": "Tercero"
+          }
+        },
+        {
+          "key": "podium",
+          "type": "string",
+          "label": {
+            "en": "Top three",
+            "fr": "Les trois premiers",
+            "de": "Die ersten drei",
+            "es": "Los tres primeros"
+          },
+          "description": {
+            "en": "“1. Marco Bezzecchi, 2. Marc Marquez, 3. Raul Fernandez”.",
+            "fr": "« 1. Marco Bezzecchi, 2. Marc Marquez, 3. Raul Fernandez ».",
+            "de": "„1. Marco Bezzecchi, 2. Marc Marquez, 3. Raul Fernandez“.",
+            "es": "«1. Marco Bezzecchi, 2. Marc Marquez, 3. Raul Fernandez»."
+          }
+        },
+        {
+          "key": "favorite_name",
+          "type": "string",
+          "label": {
+            "en": "Favorite rider (best placed)",
+            "fr": "Pilote favori (le mieux placé)",
+            "de": "Lieblingsfahrer (bestplatziert)",
+            "es": "Piloto favorito (el mejor situado)"
+          }
+        },
+        {
+          "key": "favorite_position",
+          "type": "number",
+          "label": {
+            "en": "Position of the favorite (-1: not classified)",
+            "fr": "Position du favori (-1 : non classé)",
+            "de": "Platz des Favoriten (-1: nicht gewertet)",
+            "es": "Posición del favorito (-1: no clasificado)"
+          }
+        },
+        {
+          "key": "favorite_points",
+          "type": "number",
+          "label": {
+            "en": "Points of the favorite",
+            "fr": "Points du favori",
+            "de": "Punkte des Favoriten",
+            "es": "Puntos del favorito"
+          }
+        },
+        {
+          "key": "favorite_result",
+          "type": "string",
+          "label": {
+            "en": "Result of the favorite (key)",
+            "fr": "Résultat du favori (clé)",
+            "de": "Ergebnis des Favoriten (Schlüssel)",
+            "es": "Resultado del favorito (clave)"
+          },
+          "description": {
+            "en": "win, podium, top_ten, finished, retired, absent",
+            "fr": "win, podium, top_ten, finished, retired, absent",
+            "de": "win, podium, top_ten, finished, retired, absent",
+            "es": "win, podium, top_ten, finished, retired, absent"
+          }
+        },
+        {
+          "key": "text",
+          "type": "string",
+          "label": {
+            "en": "Sentence to read or send",
+            "fr": "Phrase à lire ou envoyer",
+            "de": "Satz zum Vorlesen oder Senden",
+            "es": "Frase para leer o enviar"
+          }
+        }
+      ]
+    },
+    {
+      "key": "leader_changed",
+      "label": {
+        "en": "MotoGP: new championship leader",
+        "fr": "MotoGP : nouveau leader du championnat",
+        "de": "MotoGP: neuer WM-Führender",
+        "es": "MotoGP: nuevo líder del campeonato"
+      },
+      "description": {
+        "en": "Another rider leads the championship of a followed class.",
+        "fr": "Un autre pilote prend la tête du championnat d’une catégorie suivie.",
+        "de": "Ein anderer Fahrer führt die Wertung einer verfolgten Klasse an.",
+        "es": "Otro piloto lidera el campeonato de una categoría seguida."
+      },
+      "fields": [
+        {
+          "key": "category",
+          "type": "multi_select",
+          "label": {
+            "en": "Classes",
+            "fr": "Catégories",
+            "de": "Klassen",
+            "es": "Categorías"
+          },
+          "options": [
+            {
+              "value": "motogp",
+              "label": {
+                "en": "MotoGP",
+                "fr": "MotoGP",
+                "de": "MotoGP",
+                "es": "MotoGP"
+              }
+            },
+            {
+              "value": "moto2",
+              "label": {
+                "en": "Moto2",
+                "fr": "Moto2",
+                "de": "Moto2",
+                "es": "Moto2"
+              }
+            },
+            {
+              "value": "moto3",
+              "label": {
+                "en": "Moto3",
+                "fr": "Moto3",
+                "de": "Moto3",
+                "es": "Moto3"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: every followed class.",
+            "fr": "Vide : toutes les catégories suivies.",
+            "de": "Leer: alle verfolgten Klassen.",
+            "es": "Vacío: todas las categorías seguidas."
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "category",
+          "type": "string",
+          "label": {
+            "en": "Class (key)",
+            "fr": "Catégorie (clé)",
+            "de": "Klasse (Schlüssel)",
+            "es": "Categoría (clave)"
+          },
+          "description": {
+            "en": "motogp, moto2, moto3",
+            "fr": "motogp, moto2, moto3",
+            "de": "motogp, moto2, moto3",
+            "es": "motogp, moto2, moto3"
+          }
+        },
+        {
+          "key": "category_name",
+          "type": "string",
+          "label": {
+            "en": "Class",
+            "fr": "Catégorie",
+            "de": "Klasse",
+            "es": "Categoría"
+          }
+        },
+        {
+          "key": "year",
+          "type": "number",
+          "label": {
+            "en": "Season",
+            "fr": "Saison",
+            "de": "Saison",
+            "es": "Temporada"
+          }
+        },
+        {
+          "key": "leader_name",
+          "type": "string",
+          "label": {
+            "en": "New leader",
+            "fr": "Nouveau leader",
+            "de": "Neuer Führender",
+            "es": "Nuevo líder"
+          }
+        },
+        {
+          "key": "leader_number",
+          "type": "number",
+          "label": {
+            "en": "Number of the leader",
+            "fr": "Numéro du leader",
+            "de": "Startnummer des Führenden",
+            "es": "Dorsal del líder"
+          }
+        },
+        {
+          "key": "leader_team",
+          "type": "string",
+          "label": {
+            "en": "Team of the leader",
+            "fr": "Équipe du leader",
+            "de": "Team des Führenden",
+            "es": "Equipo del líder"
+          }
+        },
+        {
+          "key": "leader_points",
+          "type": "number",
+          "label": {
+            "en": "Points of the leader",
+            "fr": "Points du leader",
+            "de": "Punkte des Führenden",
+            "es": "Puntos del líder"
+          }
+        },
+        {
+          "key": "gap_to_second",
+          "type": "number",
+          "label": {
+            "en": "Points ahead of the second",
+            "fr": "Points d’avance sur le deuxième",
+            "de": "Punkte Vorsprung auf den Zweiten",
+            "es": "Puntos de ventaja sobre el segundo"
+          }
+        },
+        {
+          "key": "previous_leader_name",
+          "type": "string",
+          "label": {
+            "en": "Previous leader",
+            "fr": "Leader précédent",
+            "de": "Bisheriger Führender",
+            "es": "Líder anterior"
+          }
+        },
+        {
+          "key": "previous_leader_points",
+          "type": "number",
+          "label": {
+            "en": "Points of the previous leader",
+            "fr": "Points du leader précédent",
+            "de": "Punkte des bisherigen Führenden",
+            "es": "Puntos del líder anterior"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "get_next_session",
+      "label": {
+        "en": "MotoGP: next session",
+        "fr": "MotoGP : prochaine séance",
+        "de": "MotoGP: nächste Session",
+        "es": "MotoGP: próxima sesión"
+      },
+      "description": {
+        "en": "The next session of your classes, to put in a message or a condition.",
+        "fr": "La prochaine séance de vos catégories, à mettre dans un message ou une condition.",
+        "de": "Die nächste Session Ihrer Klassen, für eine Nachricht oder eine Bedingung.",
+        "es": "La próxima sesión de sus categorías, para un mensaje o una condición."
+      },
+      "timeout_seconds": 10,
+      "fields": [
+        {
+          "key": "category",
+          "type": "multi_select",
+          "label": {
+            "en": "Classes",
+            "fr": "Catégories",
+            "de": "Klassen",
+            "es": "Categorías"
+          },
+          "options": [
+            {
+              "value": "motogp",
+              "label": {
+                "en": "MotoGP",
+                "fr": "MotoGP",
+                "de": "MotoGP",
+                "es": "MotoGP"
+              }
+            },
+            {
+              "value": "moto2",
+              "label": {
+                "en": "Moto2",
+                "fr": "Moto2",
+                "de": "Moto2",
+                "es": "Moto2"
+              }
+            },
+            {
+              "value": "moto3",
+              "label": {
+                "en": "Moto3",
+                "fr": "Moto3",
+                "de": "Moto3",
+                "es": "Moto3"
+              }
+            },
+            {
+              "value": "baggers",
+              "label": {
+                "en": "Bagger World Cup (calendar only)",
+                "fr": "Bagger World Cup (calendrier seul)",
+                "de": "Bagger World Cup (nur Kalender)",
+                "es": "Bagger World Cup (solo calendario)"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: every followed class.",
+            "fr": "Vide : toutes les catégories suivies.",
+            "de": "Leer: alle verfolgten Klassen.",
+            "es": "Vacío: todas las categorías seguidas."
+          }
+        },
+        {
+          "key": "session",
+          "type": "multi_select",
+          "label": {
+            "en": "Sessions",
+            "fr": "Séances",
+            "de": "Sessions",
+            "es": "Sesiones"
+          },
+          "options": [
+            {
+              "value": "race",
+              "label": {
+                "en": "Races",
+                "fr": "Courses",
+                "de": "Rennen",
+                "es": "Carreras"
+              }
+            },
+            {
+              "value": "sprint",
+              "label": {
+                "en": "Sprints (MotoGP)",
+                "fr": "Sprints (MotoGP)",
+                "de": "Sprints (MotoGP)",
+                "es": "Sprints (MotoGP)"
+              }
+            },
+            {
+              "value": "qualifying",
+              "label": {
+                "en": "Qualifying",
+                "fr": "Qualifications",
+                "de": "Qualifying",
+                "es": "Clasificación"
+              }
+            },
+            {
+              "value": "practice",
+              "label": {
+                "en": "Practice",
+                "fr": "Essais",
+                "de": "Training",
+                "es": "Entrenamientos"
+              }
+            },
+            {
+              "value": "warmup",
+              "label": {
+                "en": "Warm up",
+                "fr": "Warm-up",
+                "de": "Warm-up",
+                "es": "Warm up"
+              }
+            },
+            {
+              "value": "test",
+              "label": {
+                "en": "Tests (outside Grands Prix)",
+                "fr": "Tests (hors Grands Prix)",
+                "de": "Tests (außerhalb der Grands Prix)",
+                "es": "Tests (fuera de los Grandes Premios)"
+              }
+            }
+          ],
+          "description": {
+            "en": "Empty: the kinds of the configuration.",
+            "fr": "Vide : les types de la configuration.",
+            "de": "Leer: die Arten der Konfiguration.",
+            "es": "Vacío: los tipos de la configuración."
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "found",
+          "type": "boolean",
+          "label": {
+            "en": "Session found",
+            "fr": "Séance trouvée",
+            "de": "Session gefunden",
+            "es": "Sesión encontrada"
+          }
+        },
+        {
+          "key": "title",
+          "type": "string",
+          "label": {
+            "en": "Session (full title)",
+            "fr": "Séance (titre complet)",
+            "de": "Session (voller Titel)",
+            "es": "Sesión (título completo)"
+          }
+        },
+        {
+          "key": "category",
+          "type": "string",
+          "label": {
+            "en": "Class",
+            "fr": "Catégorie",
+            "de": "Klasse",
+            "es": "Categoría"
+          }
+        },
+        {
+          "key": "session",
+          "type": "string",
+          "label": {
+            "en": "Session name",
+            "fr": "Nom de la séance",
+            "de": "Name der Session",
+            "es": "Nombre de la sesión"
+          }
+        },
+        {
+          "key": "grand_prix",
+          "type": "string",
+          "label": {
+            "en": "Grand Prix",
+            "fr": "Grand Prix",
+            "de": "Grand Prix",
+            "es": "Gran Premio"
+          }
+        },
+        {
+          "key": "circuit",
+          "type": "string",
+          "label": {
+            "en": "Circuit, city and country",
+            "fr": "Circuit, ville et pays",
+            "de": "Strecke, Stadt und Land",
+            "es": "Circuito, ciudad y país"
+          }
+        },
+        {
+          "key": "country",
+          "type": "string",
+          "label": {
+            "en": "Country",
+            "fr": "Pays",
+            "de": "Land",
+            "es": "País"
+          }
+        },
+        {
+          "key": "date",
+          "type": "string",
+          "label": {
+            "en": "Date (YYYY-MM-DD)",
+            "fr": "Date (AAAA-MM-JJ)",
+            "de": "Datum (JJJJ-MM-TT)",
+            "es": "Fecha (AAAA-MM-DD)"
+          }
+        },
+        {
+          "key": "time",
+          "type": "string",
+          "label": {
+            "en": "Time (HH:MM)",
+            "fr": "Heure (HH:MM)",
+            "de": "Uhrzeit (HH:MM)",
+            "es": "Hora (HH:MM)"
+          }
+        },
+        {
+          "key": "minutes_until",
+          "type": "number",
+          "label": {
+            "en": "Minutes until the start (-1: none)",
+            "fr": "Minutes avant le départ (-1 : aucune)",
+            "de": "Minuten bis zum Start (-1: keine)",
+            "es": "Minutos hasta la salida (-1: ninguna)"
+          }
+        },
+        {
+          "key": "text",
+          "type": "string",
+          "label": {
+            "en": "Sentence to read or send",
+            "fr": "Phrase à lire ou envoyer",
+            "de": "Satz zum Vorlesen oder Senden",
+            "es": "Frase para leer o enviar"
+          }
+        }
+      ]
+    },
+    {
+      "key": "get_standings",
+      "label": {
+        "en": "MotoGP: championship standings",
+        "fr": "MotoGP : classement du championnat",
+        "de": "MotoGP: WM-Stand",
+        "es": "MotoGP: clasificación del campeonato"
+      },
+      "description": {
+        "en": "The top of the championship of a class, and your favorite rider.",
+        "fr": "La tête du championnat d’une catégorie, et votre pilote favori.",
+        "de": "Die Spitze der Wertung einer Klasse und Ihr Lieblingsfahrer.",
+        "es": "La cabeza del campeonato de una categoría y su piloto favorito."
+      },
+      "timeout_seconds": 10,
+      "fields": [
+        {
+          "key": "category",
+          "type": "select",
+          "label": {
+            "en": "Class",
+            "fr": "Catégorie",
+            "de": "Klasse",
+            "es": "Categoría"
+          },
+          "options": [
+            {
+              "value": "motogp",
+              "label": {
+                "en": "MotoGP",
+                "fr": "MotoGP",
+                "de": "MotoGP",
+                "es": "MotoGP"
+              }
+            },
+            {
+              "value": "moto2",
+              "label": {
+                "en": "Moto2",
+                "fr": "Moto2",
+                "de": "Moto2",
+                "es": "Moto2"
+              }
+            },
+            {
+              "value": "moto3",
+              "label": {
+                "en": "Moto3",
+                "fr": "Moto3",
+                "de": "Moto3",
+                "es": "Moto3"
+              }
+            }
+          ],
+          "default": "motogp"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "found",
+          "type": "boolean",
+          "label": {
+            "en": "Standings found",
+            "fr": "Classement trouvé",
+            "de": "Wertung gefunden",
+            "es": "Clasificación encontrada"
+          }
+        },
+        {
+          "key": "year",
+          "type": "number",
+          "label": {
+            "en": "Season",
+            "fr": "Saison",
+            "de": "Saison",
+            "es": "Temporada"
+          }
+        },
+        {
+          "key": "leader_name",
+          "type": "string",
+          "label": {
+            "en": "Leader",
+            "fr": "Leader",
+            "de": "Führender",
+            "es": "Líder"
+          }
+        },
+        {
+          "key": "leader_points",
+          "type": "number",
+          "label": {
+            "en": "Points of the leader",
+            "fr": "Points du leader",
+            "de": "Punkte des Führenden",
+            "es": "Puntos del líder"
+          }
+        },
+        {
+          "key": "second_name",
+          "type": "string",
+          "label": {
+            "en": "Second",
+            "fr": "Deuxième",
+            "de": "Zweiter",
+            "es": "Segundo"
+          }
+        },
+        {
+          "key": "second_gap",
+          "type": "number",
+          "label": {
+            "en": "Points behind (second)",
+            "fr": "Retard en points (deuxième)",
+            "de": "Punkte Rückstand (Zweiter)",
+            "es": "Puntos de desventaja (segundo)"
+          }
+        },
+        {
+          "key": "third_name",
+          "type": "string",
+          "label": {
+            "en": "Third",
+            "fr": "Troisième",
+            "de": "Dritter",
+            "es": "Tercero"
+          }
+        },
+        {
+          "key": "third_gap",
+          "type": "number",
+          "label": {
+            "en": "Points behind (third)",
+            "fr": "Retard en points (troisième)",
+            "de": "Punkte Rückstand (Dritter)",
+            "es": "Puntos de desventaja (tercero)"
+          }
+        },
+        {
+          "key": "favorite_name",
+          "type": "string",
+          "label": {
+            "en": "Favorite rider",
+            "fr": "Pilote favori",
+            "de": "Lieblingsfahrer",
+            "es": "Piloto favorito"
+          }
+        },
+        {
+          "key": "favorite_position",
+          "type": "number",
+          "label": {
+            "en": "Position of the favorite (-1: none)",
+            "fr": "Position du favori (-1 : aucun)",
+            "de": "Platz des Favoriten (-1: keiner)",
+            "es": "Posición del favorito (-1: ninguno)"
+          }
+        },
+        {
+          "key": "favorite_points",
+          "type": "number",
+          "label": {
+            "en": "Points of the favorite",
+            "fr": "Points du favori",
+            "de": "Punkte des Favoriten",
+            "es": "Puntos del favorito"
+          }
+        },
+        {
+          "key": "favorite_gap",
+          "type": "number",
+          "label": {
+            "en": "Points behind the leader (favorite)",
+            "fr": "Retard sur le leader (favori)",
+            "de": "Rückstand auf den Führenden (Favorit)",
+            "es": "Desventaja con el líder (favorito)"
+          }
+        },
+        {
+          "key": "text",
+          "type": "string",
+          "label": {
+            "en": "Sentence to read or send",
+            "fr": "Phrase à lire ou envoyer",
+            "de": "Satz zum Vorlesen oder Senden",
+            "es": "Frase para leer o enviar"
+          }
+        }
+      ]
+    },
+    {
+      "key": "get_last_results",
+      "label": {
+        "en": "MotoGP: last results",
+        "fr": "MotoGP : derniers résultats",
+        "de": "MotoGP: letzte Ergebnisse",
+        "es": "MotoGP: últimos resultados"
+      },
+      "description": {
+        "en": "The last race, sprint or qualifying of a class: podium and favorite rider.",
+        "fr": "La dernière course, le dernier sprint ou les dernières qualifs d’une catégorie : podium et favori.",
+        "de": "Letztes Rennen, Sprint oder Qualifying einer Klasse: Podium und Lieblingsfahrer.",
+        "es": "Última carrera, sprint o clasificación de una categoría: podio y piloto favorito."
+      },
+      "timeout_seconds": 10,
+      "fields": [
+        {
+          "key": "category",
+          "type": "select",
+          "label": {
+            "en": "Class",
+            "fr": "Catégorie",
+            "de": "Klasse",
+            "es": "Categoría"
+          },
+          "options": [
+            {
+              "value": "motogp",
+              "label": {
+                "en": "MotoGP",
+                "fr": "MotoGP",
+                "de": "MotoGP",
+                "es": "MotoGP"
+              }
+            },
+            {
+              "value": "moto2",
+              "label": {
+                "en": "Moto2",
+                "fr": "Moto2",
+                "de": "Moto2",
+                "es": "Moto2"
+              }
+            },
+            {
+              "value": "moto3",
+              "label": {
+                "en": "Moto3",
+                "fr": "Moto3",
+                "de": "Moto3",
+                "es": "Moto3"
+              }
+            }
+          ],
+          "default": "motogp"
+        },
+        {
+          "key": "session",
+          "type": "select",
+          "label": {
+            "en": "Session",
+            "fr": "Séance",
+            "de": "Session",
+            "es": "Sesión"
+          },
+          "options": [
+            {
+              "value": "race",
+              "label": {
+                "en": "Race",
+                "fr": "Course",
+                "de": "Rennen",
+                "es": "Carrera"
+              }
+            },
+            {
+              "value": "sprint",
+              "label": {
+                "en": "Sprint (MotoGP)",
+                "fr": "Sprint (MotoGP)",
+                "de": "Sprint (MotoGP)",
+                "es": "Sprint (MotoGP)"
+              }
+            },
+            {
+              "value": "qualifying",
+              "label": {
+                "en": "Qualifying (grid)",
+                "fr": "Qualifications (grille)",
+                "de": "Qualifying (Startaufstellung)",
+                "es": "Clasificación (parrilla)"
+              }
+            }
+          ],
+          "default": "race"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "found",
+          "type": "boolean",
+          "label": {
+            "en": "Results found",
+            "fr": "Résultats trouvés",
+            "de": "Ergebnisse gefunden",
+            "es": "Resultados encontrados"
+          }
+        },
+        {
+          "key": "grand_prix",
+          "type": "string",
+          "label": {
+            "en": "Grand Prix",
+            "fr": "Grand Prix",
+            "de": "Grand Prix",
+            "es": "Gran Premio"
+          }
+        },
+        {
+          "key": "date",
+          "type": "string",
+          "label": {
+            "en": "Date (YYYY-MM-DD)",
+            "fr": "Date (AAAA-MM-JJ)",
+            "de": "Datum (JJJJ-MM-TT)",
+            "es": "Fecha (AAAA-MM-DD)"
+          }
+        },
+        {
+          "key": "winner_name",
+          "type": "string",
+          "label": {
+            "en": "Winner (or pole)",
+            "fr": "Vainqueur (ou pole)",
+            "de": "Sieger (oder Pole)",
+            "es": "Ganador (o pole)"
+          }
+        },
+        {
+          "key": "winner_team",
+          "type": "string",
+          "label": {
+            "en": "Team of the winner",
+            "fr": "Équipe du vainqueur",
+            "de": "Team des Siegers",
+            "es": "Equipo del ganador"
+          }
+        },
+        {
+          "key": "podium",
+          "type": "string",
+          "label": {
+            "en": "Top three",
+            "fr": "Les trois premiers",
+            "de": "Die ersten drei",
+            "es": "Los tres primeros"
+          }
+        },
+        {
+          "key": "favorite_name",
+          "type": "string",
+          "label": {
+            "en": "Favorite rider",
+            "fr": "Pilote favori",
+            "de": "Lieblingsfahrer",
+            "es": "Piloto favorito"
+          }
+        },
+        {
+          "key": "favorite_position",
+          "type": "number",
+          "label": {
+            "en": "Position of the favorite (-1: none)",
+            "fr": "Position du favori (-1 : aucun)",
+            "de": "Platz des Favoriten (-1: keiner)",
+            "es": "Posición del favorito (-1: ninguno)"
+          }
+        },
+        {
+          "key": "favorite_result",
+          "type": "string",
+          "label": {
+            "en": "Result of the favorite (key)",
+            "fr": "Résultat du favori (clé)",
+            "de": "Ergebnis des Favoriten (Schlüssel)",
+            "es": "Resultado del favorito (clave)"
+          }
+        },
+        {
+          "key": "text",
+          "type": "string",
+          "label": {
+            "en": "Sentence to read or send",
+            "fr": "Phrase à lire ou envoyer",
+            "de": "Satz zum Vorlesen oder Senden",
+            "es": "Frase para leer o enviar"
+          }
+        }
+      ]
+    }
+  ]
+}

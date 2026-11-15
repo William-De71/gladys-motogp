@@ -1,0 +1,352 @@
+{
+  "classification": [
+    {
+      "position": 1,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 7,
+      "rider": {
+        "id": "ab06dbae-7d6e-47c3-b63f-b7ac6b7d3bcd",
+        "full_name": "Marco Bezzecchi",
+        "number": 72,
+        "country": {
+          "iso": "IT"
+        }
+      },
+      "team": {
+        "name": "Aprilia Racing"
+      },
+      "constructor": {
+        "name": "Aprilia"
+      },
+      "gap": {
+        "first": "0.000",
+        "prev": "0.000"
+      },
+      "best_lap": {
+        "number": 6,
+        "time": "01:50.028"
+      }
+    },
+    {
+      "position": 2,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 6,
+      "rider": {
+        "id": "f55b433d-38b8-4d1d-bb3a-a709c82a0260",
+        "full_name": "Marc Marquez",
+        "number": 93,
+        "country": {
+          "iso": "ES"
+        }
+      },
+      "team": {
+        "name": "Ducati Lenovo Team"
+      },
+      "constructor": {
+        "name": "Ducati"
+      },
+      "gap": {
+        "first": "0.266",
+        "prev": "0.266"
+      },
+      "best_lap": {
+        "number": 5,
+        "time": "01:50.294"
+      }
+    },
+    {
+      "position": 3,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 7,
+      "rider": {
+        "id": "6c33de41-f014-4f17-8dc9-e6f36e61026a",
+        "full_name": "Fabio Di Giannantonio",
+        "number": 49,
+        "country": {
+          "iso": "IT"
+        }
+      },
+      "team": {
+        "name": "Pertamina Enduro VR46 Racing Team"
+      },
+      "constructor": {
+        "name": "Ducati"
+      },
+      "gap": {
+        "first": "0.299",
+        "prev": "0.033"
+      },
+      "best_lap": {
+        "number": 6,
+        "time": "01:50.327"
+      }
+    },
+    {
+      "position": 4,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 7,
+      "rider": {
+        "id": "58448742-f520-466a-a1a1-bf3286cce9c3",
+        "full_name": "Raul Fernandez",
+        "number": 25,
+        "country": {
+          "iso": "ES"
+        }
+      },
+      "team": {
+        "name": "SuperFile Trackhouse MotoGP Team"
+      },
+      "constructor": {
+        "name": "Aprilia"
+      },
+      "gap": {
+        "first": "0.429",
+        "prev": "0.130"
+      },
+      "best_lap": {
+        "number": 7,
+        "time": "01:50.457"
+      }
+    },
+    {
+      "position": 5,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 7,
+      "rider": {
+        "id": "9cb55304-0ac1-401c-beb6-1a4f445018a4",
+        "full_name": "Francesco Bagnaia",
+        "number": 63,
+        "country": {
+          "iso": "IT"
+        }
+      },
+      "team": {
+        "name": "Ducati Lenovo Team"
+      },
+      "constructor": {
+        "name": "Ducati"
+      },
+      "gap": {
+        "first": "0.564",
+        "prev": "0.135"
+      },
+      "best_lap": {
+        "number": 6,
+        "time": "01:50.592"
+      }
+    },
+    {
+      "position": 6,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 7,
+      "rider": {
+        "id": "eb47c439-e136-40ff-9534-5c612853f529",
+        "full_name": "Ai Ogura",
+        "number": 79,
+        "country": {
+          "iso": "JP"
+        }
+      },
+      "team": {
+        "name": "SuperFile Trackhouse MotoGP Team"
+      },
+      "constructor": {
+        "name": "Aprilia"
+      },
+      "gap": {
+        "first": "0.568",
+        "prev": "0.004"
+      },
+      "best_lap": {
+        "number": 6,
+        "time": "01:50.596"
+      }
+    },
+    {
+      "position": 7,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 6,
+      "rider": {
+        "id": "487440af-cfa9-478a-903b-4e893ee18d3a",
+        "full_name": "Johann Zarco",
+        "number": 5,
+        "country": {
+          "iso": "FR"
+        }
+      },
+      "team": {
+        "name": "Castrol Honda LCR"
+      },
+      "constructor": {
+        "name": "Honda"
+      },
+      "gap": {
+        "first": "0.707",
+        "prev": "0.139"
+      },
+      "best_lap": {
+        "number": 5,
+        "time": "01:50.735"
+      }
+    },
+    {
+      "position": 8,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 6,
+      "rider": {
+        "id": "a6108385-dd4c-490d-b02e-542ed0275f79",
+        "full_name": "Pedro Acosta",
+        "number": 37,
+        "country": {
+          "iso": "ES"
+        }
+      },
+      "team": {
+        "name": "Red Bull KTM Factory Racing"
+      },
+      "constructor": {
+        "name": "KTM"
+      },
+      "gap": {
+        "first": "0.844",
+        "prev": "0.137"
+      },
+      "best_lap": {
+        "number": 2,
+        "time": "01:50.872"
+      }
+    },
+    {
+      "position": 9,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 7,
+      "rider": {
+        "id": "2614e0f6-7e02-4076-a746-50f43fe3143c",
+        "full_name": "Fermin Aldeguer",
+        "number": 54,
+        "country": {
+          "iso": "ES"
+        }
+      },
+      "team": {
+        "name": "BK8 Gresini Racing MotoGP"
+      },
+      "constructor": {
+        "name": "Ducati"
+      },
+      "gap": {
+        "first": "0.862",
+        "prev": "0.018"
+      },
+      "best_lap": {
+        "number": 5,
+        "time": "01:50.890"
+      }
+    },
+    {
+      "position": 10,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 7,
+      "rider": {
+        "id": "ff225c9d-64a2-43ac-a70e-62cf385a85a1",
+        "full_name": "Enea Bastianini",
+        "number": 23,
+        "country": {
+          "iso": "IT"
+        }
+      },
+      "team": {
+        "name": "Red Bull KTM Tech3"
+      },
+      "constructor": {
+        "name": "KTM"
+      },
+      "gap": {
+        "first": "0.973",
+        "prev": "0.111"
+      },
+      "best_lap": {
+        "number": 6,
+        "time": "01:51.001"
+      }
+    },
+    {
+      "position": 11,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 7,
+      "rider": {
+        "id": "5cbd7eb6-ccfc-4b9f-aad1-ede25d394f7b",
+        "full_name": "Jorge Martin",
+        "number": 89,
+        "country": {
+          "iso": "ES"
+        }
+      },
+      "team": {
+        "name": "Aprilia Racing"
+      },
+      "constructor": {
+        "name": "Aprilia"
+      },
+      "gap": {
+        "first": "1.036",
+        "prev": "0.063"
+      },
+      "best_lap": {
+        "number": 3,
+        "time": "01:51.064"
+      }
+    },
+    {
+      "position": 12,
+      "points": null,
+      "status": "INSTND",
+      "time": null,
+      "total_laps": 4,
+      "rider": {
+        "id": "ba579548-f026-402b-a607-38db5317d33f",
+        "full_name": "Brad Binder",
+        "number": 33,
+        "country": {
+          "iso": "ZA"
+        }
+      },
+      "team": {
+        "name": "Red Bull KTM Factory Racing"
+      },
+      "constructor": {
+        "name": "KTM"
+      },
+      "gap": {
+        "first": "1.876",
+        "prev": "0.840"
+      },
+      "best_lap": {
+        "number": 3,
+        "time": "01:51.904"
+      }
+    }
+  ]
+}
