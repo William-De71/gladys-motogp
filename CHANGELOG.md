@@ -5,7 +5,7 @@ follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/). This file is generated at
 each release from the Conventional Commits: do not edit it by hand.
 
-## [0.1.0] - unreleased
+## [0.1.0] - 2026-11-15
 
 ### Added
 
@@ -15,3 +15,5 @@ each release from the Conventional Commits: do not edit it by hand.
 - Scene actions "Next session", "Championship standings" and "Last results", with a ready-made sentence.
 - Dashboard widgets "Next session" (countdown and the rest of the weekend), "Schedule", "Standings" and "Results", the favorite riders highlighted.
 - English, French, German and Spanish everywhere: settings, calendars, widgets, scenes and documentation.
+
+[0.1.0]: https://github.com/William-De71/gladys-motogp/releases/tag/v0.1.0
